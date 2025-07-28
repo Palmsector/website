@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', serif;
+  font-optical-sizing: auto;
+}
+
+/* Landing Page Testimonial */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+/* Pause animation on hover */
+.group:hover .animate-scroll {
+  animation-play-state: paused;
+}
+
+/* For the Country Dropdown */
+#country-select option {
+  padding: 8px;
+}
+
+/* Style for selected option */
+#country-select option:checked {
+  background-color: #eee;
+}
+
+/* Frequently Asked Questions */
+.collapsible {
+  cursor: pointer;
+  padding: 18px;
+  width: 90%;
+  border-bottom: 2px solid grey;
+  text-align: left;
+  outline: none;
+}
+
+.collapsible.active {
+  color: #28A745;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bolder;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: '\2212';
+  color: #28A745;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  width: 90%;
+  color: #000;
+}
+
+/* Plans Page */
+.tab-btn {
+  @apply hover:bg-slate-100 px-4 py-2 border border-slate-300 rounded-md font-semibold text-slate-700 text-xs md:text-sm xl:text-base;
+}
+
+.active-tab {
+  @apply bg-accentGreen border-accentGreen text-white;
+}
+
+/* Main-Page */
+.main {
+  width: calc(100% - 280px);
+  float: right;
+}
+
+@media screen and (max-width: 1023px) {
+  .main {
+    width: 100%;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f6ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #28A745;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #145A32;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #28A745 #f4f6ff;
+}

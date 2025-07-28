@@ -1,0 +1,21 @@
+<div class="bg-white shadow-md p-4 border border-black/10 rounded-xl w-full max-w-sm">
+  <i class="flex justify-end text-accentGreen text-2xl ph-duotone ph-notepad"></i>
+  <h3 class="mb-1 font-bold text-primaryGreen text-lg md:text-xl xl:text-2xl"><%= title %></h3>
+
+  <ul class="space-y-1 mb-4 pl-4 text-neutral-600">
+    <li><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Daily Rate: <%= rate %></li>
+    <li><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Duration: <%= duration %></li>
+    <li><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Min Deposit: <%= minDeposit %></li>
+    <li><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Max Deposit: <%= maxDeposit %></li>
+    <li><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Referral Bonus: <%= referral %></li>
+    <li><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Bonus Included: <%= bonus %></li>
+  </ul>
+  <p class="mb-3 text-neutral-500 text-xs italic"><%= summary %></p>
+  <div class="flex items-center mb-3 font-bold text-neutral-800 text-xs md:text-sm xl:text-base">
+    <i class="mr-1 text-accentGreen ph-duotone ph-money-wavy"></i> ROI: <%= roi %>
+  </div>
+
+  <a href="/user/invest" class="block bg-accentGreen hover:bg-green-700 py-2 rounded-md w-full text-white text-center transition duration-300">
+    Choose Plan
+  </a>
+</div>

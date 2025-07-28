@@ -1,0 +1,107 @@
+<section class="bg-white py-20">
+  <div class="mx-auto px-4 container">
+    <!-- Section Header -->
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <div class="inline-flex items-center bg-green-100 mb-6 px-4 py-2 rounded-full font-semibold text-[10px] text-green-800 md:text-xs xl:text-sm">
+        Our Services
+      </div>
+      <h2 class="mb-6 font-bold text-slate-900 text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-5xl">
+        We Offer
+        <span class="bg-clip-text bg-gradient-to-r from-green-500 to-[#1F6306] text-transparent">
+          Eco & Agriculture
+        </span>
+        Services
+      </h2>
+    </div>
+
+    <!-- Partnership Pillars -->
+    <div class="gap-4 lg:gap-6 xl:gap-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16">
+      <% const pillars = [
+        { title: 'Agricultural Consulting', text: 'Commitment to organic chemical free produce from the farm.', icon: 'agric' },
+        { title: 'Soil Fertilization', text: 'Comprehensive soil testing and enhancement strategies for growth.', icon: 'soil' },
+        { title: 'Diary Production', text: 'Direct delivery of fresh, farm grown produce straight to your doorstep.', icon: 'diary' },
+        { title: 'Hydroponic System', text: 'Eco-friendly farming that that protect the environment promote.', icon: 'hydroponic' },
+      ]; %>
+
+      <% pillars.forEach(p => { %>
+        <div class="group bg-otherGreen shadow-md hover:shadow-lg border-0 rounded-xl text-neutral-100 transition-all duration-300">
+          <div class="p-4 md:p-6 xl:p-8 text-center">
+            <div class="flex justify-center items-center bg-gradient-to-br mx-auto mb-6 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+              <% if (p.icon === 'agric') { %>
+                  <img src="/Images/agric-service.avif" class="rounded-xl" alt="consulting"> 
+              <% } else if (p.icon === 'soil') { %>
+                  <img src="/Images/soil-service.avif" class="rounded-xl" alt="soil"> 
+              <% } else if (p.icon === 'diary') { %>
+                  <img src="/Images/dairy-service.avif" class="rounded-xl" alt="diary"> 
+              <% } else if (p.icon === 'hydroponic') { %>
+                  <img src="/Images/hydroponic-service.avif" class="rounded-xl" alt="hydroponic"> 
+              <% } %>
+            </div>
+            <h3 class="mb-3 font-bold text-xl"><%= p.title %></h3>
+            <p class="text-sm leading-relaxed">
+              <%= p.text %>
+            </p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+    <!-- Agriculture Work-->
+    <div class="bg-gradient-to-br from-slate-50 to-green-50 p-8 lg:p-12 rounded-3xl">
+      <div class="mb-12 text-center">
+        <h3 class="mb-4 font-bold text-slate-900 text-xl md:text-2xl xl:text-3xl">How We Do Agricultural Work</h3>
+        <p class="mx-auto max-w-2xl text-slate-600 text-sm md:text-base xl:text-lg">
+          The modern consumer demands, quality organic products which is why our selection of farm-grown herbs are top quality, always fresh, and 100% organic certified.
+        </p>
+      </div>
+
+      <% const steps = [
+        {
+          step: '1', color: 'from-yellow-400 to-yellow-500', title: 'Schedule Your Experience', text: 'Enrich soil with nutrients for healthy crop growth.',
+          bullets: ['Soil health assessment', 'Goal alignment testing']
+        },
+        {
+          step: '2', color: 'from-blue-400 to-blue-500', title: 'Get Professional  Advice', text: 'Carefully sow seeds to ensure optimal growth.',
+          bullets: ['Bespoke growth design', 'Risk management framework']
+        },
+        {
+          step: '3', color: 'from-green-400 to-green-600', title: 'Meet Our  Expert Farmer', text: 'Monitor and care for crops with sustainable practices.',
+          bullets: ['Regular performance reviews', 'Educational resources']
+        },
+      ]; %>
+
+      <div class="gap-8 grid md:grid-cols-3">
+        <% steps.forEach(s => { %>
+          <div class="group text-center">
+            <div class="size-12 md:size-16 xl:size-20 bg-gradient-to-br <%= s.color %> rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-2xl group-hover:scale-110 transition-transform duration-300">
+              <%= s.step %>
+            </div>
+            <h4 class="mb-3 font-bold text-slate-900 text-base md:text-lg xl:text-xl"><%= s.title %></h4>
+            <p class="mb-4 text-slate-600"><%= s.text %></p>
+            <div class="space-y-2">
+              <% s.bullets.forEach(b => { %>
+                <div class="flex justify-center items-center text-slate-600 text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 size-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path d="M16 7h6v6" />
+                    <path d="m22 7-8.5 8.5-5-5L2 17" />
+                  </svg>
+                  <%= b %>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/create" aria-label="Begin Your Growth Journey" class="group flex justify-center items-center bg-gradient-to-r from-accentGreen hover:from-accentGren to-otherGreen hover:to-otherGreen shadow-lg hover:shadow-xl mx-auto px-8 py-4 rounded w-fit font-bold text-neutral-100 text-sm md:text-base xl:text-lg transition-all duration-300">
+          Begin Your Growth Journey
+          <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1 duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

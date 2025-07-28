@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palm Sector</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-deepBlack text-xs md:text-sm xl:text-base">
+  <%- include('partials/_alert') %>
+  <%- include("partials/_nav"); -%>
+
+  <section id="heroSection">
+    <%- include("partials/homepage/_heroSection"); -%>
+  </section>
+  <section id="secondSection">
+    <%- include("partials/homepage/_partnership"); -%>
+  </section>
+  <section id="thirdSection">
+    <%- include("partials/homepage/_serviceSection"); -%>
+  </section>
+  <section id="fourthSection">
+    <%- include("partials/homepage/_education.ejs"); -%>
+  </section>
+  <section id="steps-to-success" class="relative bg-cover bg-no-repeat bg-center" style="background-image: url('/Images/map.png');">
+    <div class="absolute inset-0 bg-primaryGreen"></div>
+    <main class="relative py-[2rem] sm:py-[3rem] md:py-[4rem] lg:py-[6rem] xl:py-[8rem] text-white text-center">
+      <div class="mx-auto p-4 container">
+        <div class="inline-flex items-center bg-green-100 mb-6 px-4 py-2 rounded-full font-semibold text-[10px] text-green-800 md:text-xs xl:text-sm">
+          Happy Customers
+        </div>
+      </div>
+      <section>
+        <div class="py-12 overflow-hidden">
+          <div class="group relative flex w-full">
+            <div class="flex space-x-6 animate-scroll">
+              <div class="flex-shrink-0 bg-accentGreen shadow-lg p-6 rounded-2xl w-80 text-white text-left">
+                <p class="mb-4 font-medium text-sm md:text-base xl:text-lg">Today, our agri-business has achieved €150,000 in produce value within 9 months, with 95% of it coming from Palm Sector Alliance partnerships.</p>
+                <div class="flex items-center space-x-3">
+                  <img src="/Images/testimonial 3.png" alt="Testimonial Image" class="rounded-full w-10 h-10">
+                  <div>
+                    <p class="font-bold">Bhavesh Vora</p>
+                    <p class="text-[10px] md:text-xs xl:text-sm">Agri-Tech Solutions, India</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 bg-accentGreen shadow-lg p-6 rounded-2xl w-80 text-white text-left">
+                <p class="mb-4 font-medium text-sm md:text-base xl:text-lg">Palm Sector Alliance has been a fundamental networking tool for me, especially for my farm's profitability.</p>
+                <div class="flex items-center space-x-3">
+                  <img src="/Images/testimonial 4.png" alt="Testimonial Image" class="rounded-full w-10 h-10">
+                  <div>
+                    <p class="font-bold">Rafael Lins</p>
+                    <p class="text-[10px] md:text-xs xl:text-sm">Crop Protection, Brazil</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 bg-accentGreen shadow-lg p-6 rounded-2xl w-80 text-white text-left">
+                <p class="mb-4 font-medium text-sm md:text-base xl:text-lg">Over 86% of my farm partners come through referrals from Palm Sector Alliance Members.</p>
+                <div class="flex items-center space-x-3">
+                  <img src="/Images/testimonial 5.png" alt="Testimonial Image" class="rounded-full w-10 h-10">
+                  <div>
+                    <p class="font-bold">Jennie B</p>
+                    <p class="text-[10px] md:text-xs xl:text-sm">Produce Marketing, United States</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 bg-accentGreen shadow-lg p-6 rounded-2xl w-80 text-white text-left">
+                <p class="mb-4 font-medium text-sm md:text-base xl:text-lg">I highly recommend Palm Sector Alliance to every farmer who is looking to step up their agricultural success.</p>
+                <div class="flex items-center space-x-3">
+                  <img src="/Images/testimonial 7.png" alt="Testimonial Image" class="rounded-full w-10 h-10">
+                  <div>
+                    <p class="font-bold">Lynne R</p>
+                    <p class="text-[10px] md:text-xs xl:text-sm">Rural Development Consultant, Canada</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 bg-accentGreen shadow-lg p-6 rounded-2xl w-80 text-white text-left">
+                <p class="mb-4 font-medium text-sm md:text-base xl:text-lg">There is no strategy that benefits so many areas in one's farming operation than Palm Sector Alliance.</p>
+                <div class="flex items-center space-x-3">
+                  <img src="/Images/testimonial 8.png" alt="Testimonial Image" class="rounded-full w-10 h-10">
+                  <div>
+                    <p class="font-bold">Dr. Adriana Cortés</p>
+                    <p class="text-[10px] md:text-xs xl:text-sm">Sustainable Agribusiness, Colombia</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 bg-accentGreen shadow-lg p-6 rounded-2xl w-80 text-white text-left">
+                <p class="mb-4 font-medium text-sm md:text-base xl:text-lg">Palm Sector Alliance expanded my network and improved my farm's profitability, market access, and overall well-being.</p>
+                <div class="flex items-center space-x-3">
+                  <img src="/Images/testimonial 6.png" alt="Testimonial Image" class="rounded-full w-10 h-10">
+                  <div>
+                    <p class="font-bold">Jackson T</p>
+                    <p class="text-[10px] md:text-xs xl:text-sm">Agricultural Trade Shows, UK</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+  <section id="footer">
+    <%- include("partials/_footer"); -%>
+  </section>
+</body>
+
+</html>

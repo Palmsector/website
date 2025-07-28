@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deposit</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/auth.js"></script>
+</head>
+
+<body class="bg-offWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { currentPage }); -%>
+  <%- include('partials/_alert') %>
+  <section class="flex flex-row justify-between items-center m-4">
+    <div>
+      <p class="font-bold text-lightBlack text-lg md:text-xl lg:text-2xl xl:text-3xl">Deposit</p>
+      <p class="text-neutral-500">Deposit cryptocurrency funds to your account.</p>
+    </div>
+    <div>
+      <p class="text-gray-700">Your Balance</p>
+      <h2 class="font-bold text-primaryGreen text-lg md:text-xl lg:text-2xl xl:text-3xl text-center">$<%= userBalance %></h2>
+    </div>
+  </section>
+
+  <section class="p-4">
+    <div class="bg-white mt-4 p-4 border border-[#767680] border-opacity-10 rounded-2xl">
+            <p class="font-bold text-neutral-800 text-sm md:text-base xl:text-lg"><span><i class="ph-arrow-bend-right-down text-accentGreen text-2xl ph"></i></span>Cryptocurrency Deposit</p>
+      <p class="text-neutral-500">Deposit Into Your Account Using Cryptocurrency.</p>
+
+      <form id="myForm" action="/user/deposit" method="POST" class="mt-10 w-full text-left">
+        <label for="coin" class="block font-medium text-gray-700 cursor-pointer">Cryptocurrency <span class="text-red-500">*</span></label>
+        <select required name="coin" id="coin" class="mt-1 mb-4 px-4 pr-10 border focus:border-primaryGreen border-black/10 rounded-md focus:outline-none w-full h-11 cursor-pointer">
+          <option value="">Select Coin</option>
+          <option value="bitcoin">Bitcoin</option>
+          <option value="tron">Tron</option>
+          <option value="ethereum">Ethereum</option>
+          <option value="trc20">USDT Trc20</option>
+        </select>
+        <%- include('partials/_amountInput.ejs', { type: 'number', id: 'amount', name: 'amount', label: 'Amount', placeholder: `Minimum of $${minimum}`, required: true, quickSelect: [200, 300, 450, 500, 1000, 'max'], maxValue: 10000000}) %>
+        <p id="warning" class="hidden -mt-3 text-[10px] text-red-600 md:text-xs xl:text-sm">Minimum Deposit is $<%= minimum %></p>
+        <%- include('partials/_button.ejs', { type: 'submit', label: 'Make Deposit', icon: '📥', disabled: false }) %>
+      </form>
+    </div>
+    <div class="bg-[#FFFFFF] mt-6 p-4 border border-[#767680] border-opacity-10 rounded-2xl">
+      <h2 class="mb-4 font-bold text-lightBlack text-sm md:text-base xl:text-lg">Your Deposits</h2>
+
+      <div class="h-72 overflow-y-auto">
+        <% if (deposits.length === 0) { %>
+        <p class="text-red-600 text-xs sm:text-sm md:text-base">No Deposit Transaction Yet.</p>
+        <% } else { %>
+        <% deposits.forEach(deposit => { %>
+        <%- include('partials/_transaction', {
+                iconBg: "bg-[#2DE300]",
+                iconSrc: "/Images/deposit.svg",
+                iconAlt: "Deposit Icon",
+                textColor: "text-[#141619]",
+                description: `Deposit via ${deposit.coin}`,
+                amountColor: "text-[#20BF55]",
+                amountSign: "+",
+                amount: deposit.amount,
+                date: deposit.createdAt.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+            }) %>
+        <% }) %>
+        <% } %>
+      </div>
+    </div>
+  </section>
+  <script>
+  const minimum = <%= JSON.stringify(minimum) %>;
+  document.getElementById("amount").addEventListener("input", function () {
+    const amountInput = this;
+    const minAmount = parseFloat(minimum);
+    const enteredAmount = parseFloat(amountInput.value);
+    const warning = document.getElementById("warning");
+
+    // Hide or show the deposit message
+    if (!isNaN(enteredAmount) && enteredAmount > minAmount) {
+      warning.classList.add("hidden");
+    } else {
+      warning.classList.remove("hidden");
+    }
+  });
+</script>
+</body>
+
+</html>

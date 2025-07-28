@@ -1,0 +1,15 @@
+export default [
+  "gmail.com",
+  "outlook.com",
+  "hotmail.com",
+  "live.com",
+  "msn.com",
+  "yahoo.com",
+  "ymail.com",
+  "rocketmail.com",
+  "icloud.com",
+  "protonmail.com",
+  "zoho.com",
+  "aol.com",
+  "fastmail.com",
+];

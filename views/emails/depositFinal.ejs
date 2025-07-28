@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Deposit Confirmed</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .logo {
+      width: 40px;
+      margin-bottom: 20px;
+    }
+
+    .greeting {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #eab308;
+      text-align: left;
+    }
+
+    .message {
+      font-size: 1rem;
+      color: #333333;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .amount {
+      font-weight: bold;
+      color: #d4af37;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      border: 2px solid #eab308;
+      border-radius: 6px;
+      color: #eab308;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .footer {
+      background-color: #eab308;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      margin-top: 40px;
+    }
+
+    .footer a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="logo" src="https://res.cloudinary.com/dpmx02shl/image/upload/v1753363241/palmsector.png" alt="Palm Sector Logo" />
+      <h4 class="greeting">Dear <%= name %>,</h4>
+    </div>
+
+    <div class="message">
+      <p>We’re pleased to inform you that your deposit of <span class="amount">$<%= amount %></span> has been successfully processed and credited to your account.</p>
+      <p>You can now explore a wide range of investment opportunities with <strong>zero platform fees</strong>. Please note that if any charges are incurred, they may come from your wallet or payment provider.</p>
+      <p>We appreciate your trust in Palm Sector and look forward to supporting your investment goals.</p>
+    </div>
+
+    <div style="text-align: center;">
+      <a class="cta-button" href="https://www.palmsector.ltd/user/dashboard">Access Your Dashboard</a>
+    </div>
+
+    <div class="footer">
+      <p>&copy; <%= year %>. All rights reserved.</p>
+      <p>
+        For assistance, please contact us at
+        <a href="mailto:support@palmsector.ltd">support@palmsector.ltd</a>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

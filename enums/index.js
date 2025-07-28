@@ -1,0 +1,18 @@
+export const plans = { 
+    "test scheme": { min: 100, max: 999, dailyPercent: 3.5, duration: 7 },
+    "starters scheme": { min: 1000, max: 4999, dailyPercent: 4, duration: 14 },
+    "professional scheme": { min: 5000, max: 24999, dailyPercent: 4.5, duration: 35 },
+    "premium scheme": { min: 25000, max: 49999, dailyPercent: 5, duration: 30 },
+    "veteran trade": { min: 50000, max: 99999, dailyPercent: 5.5, duration: 38 },
+    supreme: { min: 100000, max: 1000000, dailyPercent: 6, duration: 45 },
+    "halal trial": { min: 100, max: 500, dailyPercent: 0.8, duration: 365 },
+    "halal step 1": { min: 500, max: 10000, dailyPercent: 7, duration: 365 },
+    "halal step 2": { min: 5000 , max: 100000 , dailyPercent: 1.5, duration: 100 },
+    "halal step 3": { min: 500000, max: 1000000, dailyPercent: 10, duration: 30 },
+    "holiday luxury apartment vi": { min: 200000, max: 500000, dailyPercent: 6, duration: 365 },
+    "holiday luxury apartment v": { min: 180000, max: 400000, dailyPercent: 5.5, duration: 365 },
+    "holiday luxury apartment iv": { min: 150000, max: 350000, dailyPercent: 5, duration: 365},
+    "holiday luxury apartment iii": { min: 175000, max: 320000, dailyPercent: 4, duration: 365 },
+    "holiday luxury apartment ii": { min: 100000, max: 180000, dailyPercent: 3, duration: 365 },
+    "holiday luxury apartment": { min: 50000, max: 250000, dailyPercent: 2, duration: 365 },
+}

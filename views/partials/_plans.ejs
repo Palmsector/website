@@ -1,0 +1,47 @@
+<div>
+  <!-- Tabs -->
+  <div class="flex gap-2 md:gap-4 mb-6">
+    <button type="button" class="tab-btn active-tab" data-tab="standard">Standard</button>
+    <button type="button" class="tab-btn" data-tab="halal">Halal</button>
+    <button type="button" class="tab-btn" data-tab="realestate">Real Estate</button>
+  </div>
+
+  <!-- Plan Sections -->
+  <div id="standard" class="block tab-content">
+    <%- include("./_standard") %>
+  </div>
+
+  <div id="halal" class="hidden tab-content">
+    <%- include("./_halal") %>
+  </div>
+
+  <div id="realestate" class="hidden tab-content">
+    <%- include("./_realEstate") %>
+  </div>
+</div>
+
+<!-- Toggle Script -->
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+
+      // Toggle active class
+      tabs.forEach(t => t.classList.remove('active-tab'));
+      tab.classList.add('active-tab');
+
+      // Show/hide tab content
+      contents.forEach(content => {
+        content.classList.add('hidden');
+        content.classList.remove('block');
+        if (content.id === target) {
+          content.classList.remove('hidden');
+          content.classList.add('block');
+        }
+      });
+    });
+  });
+</script>

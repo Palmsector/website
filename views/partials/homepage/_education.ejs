@@ -1,0 +1,139 @@
+<section class="bg-white py-20">
+  <div class="mx-auto px-4 container">
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <div class="inline-flex items-center bg-green-100 mb-6 px-4 py-2 rounded-full font-semibold text-[10px] text-green-800 md:text-xs xl:text-sm">
+        Knowledge for Growth
+      </div>
+      <h2 class="mb-6 font-bold text-slate-900 text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-5xl">
+        Empowering Your 
+        <span class="bg-clip-text bg-gradient-to-r from-accentGreen to-otherGreen text-transparent">
+          Farming Decisions
+        </span>
+      </h2>
+      <p class="text-slate-600 text-sm md:text-base xl:text-xl leading-relaxed">
+        Insight is the foundation of successful agricultural ventures. Our comprehensive <b>agronomic resources</b> and expert insights help you navigate complex farming landscapes with clarity and confidence.
+      </p>
+    </div>
+
+    <div class="gap-6 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16">
+      <% const stats = [
+        { value: '500+', label: 'Agronomic Resources', color: 'from-yellow-50 to-yellow-100' },
+        { value: '50+', label: 'Expert Farmer Workshops', color: 'from-blue-50 to-blue-100' },
+        { value: '10K+', label: 'Farmers Trained', color: 'from-green-50 to-green-100' },
+        { value: '24/7', label: 'Platform Access', color: 'from-purple-50 to-purple-100' }
+      ]; %>
+      <% stats.forEach(stat => { %>
+        <div class="text-center p-4 md:p-5 xl:p-6 bg-gradient-to-br <%= stat.color %> rounded-2xl">
+          <div class="text-xl md:text2xl xl:text-3xl font-bold text-<%= stat.color %>-600 mb-2"><%= stat.value %></div>
+          <div class="text-slate-600 text-xs md:text-sm"><%= stat.label %></div>
+        </div>
+      <% }) %>
+    </div>
+
+    <div class="gap-12 grid lg:grid-cols-2 mb-16">
+      <div class="space-y-8">
+        <div class="group shadow-lg hover:shadow-xl border-0 rounded-xl overflow-hidden transition-all duration-300">
+          <div class="p-0">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 text-white">
+              <div class="flex items-center mb-6">
+                <div class="flex justify-center items-center bg-white/20 mr-4 rounded-2xl size-12 md:size-14 xl:size-16">
+                  <svg class="size-6 md:size-7 xl:size-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="mb-1 font-bold text-lg md:text-xl xl:text-2xl">Weekly Crop & Market Briefings</h3>
+                  <p class="text-blue-100">Expert Insights & Trends</p>
+                </div>
+              </div>
+              <p class="mb-6 text-blue-50 text-sm md:text-base xl:text-lg leading-relaxed">
+                Join our weekly webinars where our experts break down <b>crop health</b>, emerging <b>market opportunities</b>, and strategic insights in easy-to-understand terms for your farm.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="text-blue-100 text-xs md:text-sm">Next session: Tomorrow 2:00 PM CET</div>
+                <button class="flex items-center bg-white hover:bg-blue-50 px-4 py-2 rounded-lg font-semibold text-blue-600 transition-transform group-hover:translate-x-1 duration-300">
+                  <svg class="mr-2 size-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 4v16l13-8L7 4z"></path>
+                  </svg>
+                  Join Live
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="group shadow-lg hover:shadow-xl border-0 rounded-xl transition-all duration-300">
+          <div class="p-6 md:p-7 xl:p-8">
+            <div class="flex items-start space-x-4">
+              <div class="flex flex-shrink-0 justify-center items-center bg-gradient-to-br from-green-100 to-green-200 rounded-xl size-8 md:size-10 xl:size-12 group-hover:scale-110 transition-transform duration-300">
+                <svg class="size-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M12 17.75L18.2 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.45 4.73L5.82 21z"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="mb-2 font-bold text-slate-900 text-sm md:text-base xl:text-xl">Farm Management Certifications</h3>
+                <p class="mb-4 text-slate-600">Earn recognized certifications in <b>sustainable farming</b>, <b>precision agriculture</b>, and <b>agribusiness management</b> through our structured learning paths.</p>
+                <div class="flex items-center font-semibold text-green-600 text-xs md:text-sm">
+                  <span>3 Programs Available</span>
+                  <svg class="ml-2 size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h3 class="mb-6 font-bold text-slate-900 text-lg md:text-xl xl:text-2xl">Agricultural Learning Hub</h3>
+
+        <% const resources = [
+          { iconColor: 'from-yellow-100 to-yellow-200', title: 'Crop Cultivation Guides', desc: 'Comprehensive guides covering diverse crop strategies and best practices', count: '25 Guides', icon: 'book-open' },
+          { iconColor: 'from-purple-100 to-purple-200', title: 'Agri-Market Reports', desc: 'Weekly and monthly analysis of agricultural market trends and prices', count: 'Updated Daily', icon: 'file-text' },
+          { iconColor: 'from-blue-100 to-blue-200', title: 'Farmer Community Forum', desc: 'Connect with fellow farmers and agricultural experts, share insights and solutions', count: '5K+ Members', icon: 'users' },
+          { iconColor: 'from-orange-100 to-orange-200', title: 'Farm Planning Tools', desc: 'Interactive tools for crop rotation, resource allocation, and yield projection', count: '15 Tools', icon: 'download' },
+        ]; %>
+
+        <% resources.forEach(r => { %>
+          <div class="group shadow-md hover:shadow-lg border-0 rounded-xl transition-all duration-300 cursor-pointer">
+            <div class="p-6">
+              <div class="flex items-center space-x-4">
+                <div class="flex justify-center items-center bg-gradient-to-br <%= r.iconColor %> rounded-xl size-12 group-hover:scale-110 transition-transform duration-300">
+                  <% if (r.icon === 'book-open') { %>
+                    <svg class="size-6 text-<%= r.iconColor %>-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M12 20h9V4h-9M12 20H3V4h9m0 0v16"></path>
+                    </svg>
+                  <% } else if (r.icon === 'file-text') { %>
+                    <svg class="size-6 text-<%= r.iconColor %>-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                      <path d="M14 2v6h6" />
+                      <path d="M16 13H8" />
+                      <path d="M16 17H8" />
+                      <path d="M10 9H8" />
+                    </svg>
+                  <% } else if (r.icon === 'users') { %>
+                    <svg class="size-6 text-<%= r.iconColor %>-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M17 21v-2a4 4 0 00-3-3.87M5 21v-2a4 4 0 013-3.87m8-3a4 4 0 10-8 0 4 4 0 008 0z" />
+                    </svg>
+                  <% } else if (r.icon === 'download') { %>
+                    <svg class="size-6 text-<%= r.iconColor %>-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+                      <path d="M7 11l5 5 5-5" />
+                      <path d="M12 4v12" />
+                    </svg>
+                  <% } %>
+                </div>
+                <div class="flex-1">
+                  <h4 class="mb-1 font-bold text-slate-900 text-sm md:text-base xl:text-lg"><%= r.title %></h4>
+                  <p class="text-slate-600 text-sm"><%= r.desc %></p>
+                </div>
+                <div class="text-slate-500 text-xs md:text-sm"><%= r.count %></div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>

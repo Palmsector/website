@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <%- include("partials/_nav"); -%> <%- include ("partials/_secondHero.ejs", {
+    imageUrl: '/Images/headingImg.jpg', heading: 'About Us', subtext: 'Home'});
+    -%>
+  <section id="heroSection">
+    <%- include("partials/about/_heroSection"); -%>
+  </section>
+  <section id="missonSection">
+    <%- include("partials/about/_mission"); -%>
+  </section>
+  <section class="mx-auto p-4 container">
+    <div class="flex md:flex-row flex-col md:justify-between gap-y-5 md:gap-y-0 my-5 md:mt-10">
+      <div class="flex flex-col gap-y-3 w-full md:w-[48%] xl:w-[45%]">
+        <p class="text-accentGreen italic">About Palm Sector</p>
+        <p class="font-bold text-neutral-900 text-xl sm:text-2xl md:text-3xl xl:text-4xl">
+          We Are Here for Your Harvest
+        </p>
+        <p class="text-black/70">
+          Palm Sector is a collaborative network of agricultural specialists and farm enterprises
+          who formed one body to cultivate prosperity with a common goal of securing
+          better yields and market stability for their members. <br />
+          <br />
+          The severe droughts and market fluctuations of 2010 created significant challenges for many in the agricultural sector.
+          Recognizing the need for collective strength, a group of leading agronomists and farm innovators came together to form
+          Palm Sector, empowering it as a trusted entity to distribute knowledge, foster innovation, and grow success for farmers worldwide.
+        </p>
+        <div class="p-5 border-primabg-accentGreen border-l-2 rounded-tl-[1.5rem] md:rounded-tl-[2rem] xl:rounded-tl-[2.5rem]">
+          <p class="max-w-[40ch] text-neutral-900 italic">
+            In a world of evolving climates and markets, those who adapt and innovate define the future of farming.
+          </p>
+          <p class="mt-2 text-[10px] text-black/80 md:text-xs xl:text-sm">
+            Palm Sector
+          </p>
+        </div>
+        <a href="/create" class="bg-accentGreen hover:bg-otherGreen my-10 py-3 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-44 text-white text-center duration-300">Get Started</a>
+      </div>
+      <div class="relative bg-neutral-900 p-2 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-full md:w-[48%] xl:w-[45%]">
+        <img src="/Images/about1.jpg" alt="About Us Image" class="rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] size-full object-cover -translate-y-4 translate-x-4 md:-translate-y-6 md:translate-x-6 xl:-translate-y-8 xl:translate-x-8" />
+      </div>
+    </div>
+    <div class="flex md:flex-row flex-col-reverse md:justify-between md:items-center gap-y-10 md:gap-y-0 my-20 md:mt-40">
+      <div class="relative bg-neutral-900 p-2 rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-full md:w-[48%] xl:w-[45%] h-[30rem] md:h-[35rem] xl:h-[40rem]">
+        <img src="/Images/map.jpg" alt="About Us Image" class="rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] size-full object-cover -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 xl:-translate-x-8 xl:-translate-y-8" />
+        <p class="bottom-1 md:bottom-2 left-10 absolute text-[10px] text-white md:text-xs xl:text-sm">
+          Palm Sector
+        </p>
+      </div>
+      <div class="flex flex-col gap-y-3 w-full md:w-[48%] xl:w-[45%]">
+        <p class="text-primabg-accentGreen italic">
+          Why Choose Palm Sector
+        </p>
+        <p class="font-bold text-neutral-900bg-neutral-900 text-xl sm:text-2xl md:text-3xl xl:text-4xl">
+          Known for Trust, Reliability, and Farmer Support
+        </p>
+        <p>
+          At Palm Sector, our reputation is built on a foundation of
+          integrity and farmer-centric values. <br />
+          <br />We prioritize your peace of mind by upholding the highest
+          standards of transparency, ethical conduct, and personalized
+          agronomic guidance. When you partner with us, you can be confident that your
+          interests are always at the forefront of everything we do, from soil to harvest.
+        </p>
+        <div class="flex sm:flex-row flex-col gap-5 mt-10">
+          <div class="flex gap-x-1">
+            <i class="text-accentGreen text-3xl md:text-4xl xl:text-5xl ph-fill ph-shield shrink-0"></i>
+            <div class="flex flex-col gap-y-1">
+              <p class="font-semibold text-neutral-900 text-base md:text-lg xl:text-xl">
+                Unwavering Integrity
+              </p>
+              <p class="text-black/70">
+                Our ethical standards guide every decision we make, ensuring
+                your farm ventures are in safe and trustworthy hands.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-x-1">
+            <i class="text-accentGreen text-3xl md:text-4xl xl:text-5xl ph-fill ph-person-simple shrink-0"></i>
+            <div class="flex flex-col gap-y-1">
+              <p class="font-semibold text-neutral-900 text-base md:text-lg xl:text-xl">
+                Farmer-Centric Approach
+              </p>
+              <p class="text-black/70">
+                We prioritize your needs by offering personalized support and
+                dedicated service throughout your farming journey.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>

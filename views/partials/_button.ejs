@@ -1,0 +1,7 @@
+<button type="<%= type %>" class="mt-4 px-4 py-4 rounded-lg text-neutral-100 font-medium w-full
+        <%= disabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-accentGreen hover:bg-primaryGreen' %> duration-300" <%= disabled ? 'disabled' : '' %>>
+  <%= label %>
+  <% if (icon) { %>
+  <span class="inline-block mr-2"><%= icon %></span>
+  <% } %>
+</button>

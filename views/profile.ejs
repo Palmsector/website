@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/auth.js"></script>
+</head>
+
+<body class="bg-offWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { currentPage }); -%>
+  <%- include("partials/_alert"); -%>
+
+  <section class="p-4">
+    <!-- User Profile Details -->
+    <div class="bg-white mb-4 p-4 border border-slate-200 rounded-lg">
+      <p class="mb-4 font-bold text-lightBlack text-lg md:text-xl lg:text-2xl xl:text-3xl">Your Profile Details</p>
+
+      <% if (userProfile) { %>
+      <div class="gap-5 grid grid-cols-1 md:grid-cols-2 mt-4 capitalize">
+        <div class="flex flex-col gap-y-2">
+          <p><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-red-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-earth-icon lucide-earth">
+                <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" />
+                <path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17" />
+                <path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>Country:</strong> <%= userProfile.country || "N/A" %></p>
+
+          <p><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-blue-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-check-inside-icon lucide-map-pin-check-inside">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                <path d="m9 10 2 2 4-4" />
+              </svg>City:</strong> <%= userProfile.city || "N/A" %></p>
+
+          <p><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-yellow-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-question-mark-icon lucide-mail-question-mark">
+                <path d="M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                <path d="M18 15.28c.2-.4.5-.8.9-1a2.1 2.1 0 0 1 2.6.4c.3.4.5.8.5 1.3 0 1.3-2 2-2 2" />
+                <path d="M20 22v.01" />
+              </svg>Postal Code:</strong> <%= userProfile.postalCode || "N/A" %></p>
+
+          <p><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-purple-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone">
+                <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+              </svg>Phone Number:</strong> <%= userProfile.phoneNumber || "N/A" %></p>
+
+          <p><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-orange-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <path d="M12 17h.01" />
+              </svg>Gender:</strong> <%= userProfile.gender || "N/A" %></p>
+        </div>
+
+        <div class="flex flex-col gap-y-2">
+          <p class="break-all"><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-green-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key-round-icon lucide-key-round">
+                <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>Bitcoin Wallet:</strong> <%= userWallets?.bitcoin || "N/A" %></p>
+
+          <p class="break-all"><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-green-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key-round-icon lucide-key-round">
+                <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>Ethereum (ETH) Wallet:</strong> <%= userWallets?.ethereum || "N/A" %></p>
+
+          <p class="break-all"><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-green-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key-round-icon lucide-key-round">
+                <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>USDT (TRC20) Wallet:</strong> <%= userWallets?.trc20 || "N/A" %></p>
+
+          <p class="break-all"><strong><svg xmlns="http://www.w3.org/2000/svg" class="inline bg-green-100 mr-1 mb-0.5 p-1 rounded-md size-6 md:size-7 xl:size-8 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key-round-icon lucide-key-round">
+                <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>Tron Wallet:</strong> <%= userWallets?.tron || "N/A" %></p>
+        </div>
+      </div>
+      <% } else { %>
+      <p class="text-gray-700">You have not completed your profile yet.</p>
+      <% } %>
+    </div>
+
+    <!-- Update Profile Form -->
+    <div class="bg-white p-4 border border-slate-200 rounded-lg">
+      <p class="font-bold text-lightBlack text-base md:text-lg xl:text-xl">Update your profile</p>
+      <p class="text-darkGreen">Use the form to update your profile.</p>
+
+      <form id="myForm" action="/user/profile" method="post" class="mt-10">
+        <div class="flex md:flex-row flex-col gap-y-2 md:gap-x-5 md:gap-y-0 w-full">
+          <div class="w-full md:w-1/2">
+            <%- include('partials/_input.ejs', { type: 'text', id: 'country', name: 'country', label: 'Country', placeholder: userProfile?.country || 'Enter your country', required: false }) %>
+          </div>
+          <div class="w-full md:w-1/2">
+            <%- include('partials/_input.ejs', { type: 'text', id: 'city', name: 'city', label: 'City', placeholder: userProfile?.city || 'Enter your city', required: false }) %>
+          </div>
+        </div>
+        <div class="flex md:flex-row flex-col gap-y-2 md:gap-x-5 md:gap-y-0 w-full">
+          <div class="w-full md:w-1/2">
+            <%- include('partials/_input.ejs', { type: 'text', id: 'postalCode', name: 'postalCode', label: 'Postal Code', placeholder: userProfile?.postalCode || 'Enter your postal code', required: false }) %>
+          </div>
+          <div class="w-full md:w-1/2">
+            <%- include('partials/_input.ejs', { type: 'text', id: 'phoneNumber', name: 'phoneNumber', label: 'Phone Number', placeholder: userProfile?.phoneNumber || 'Enter your phone number', required: false }) %>
+          </div>
+        </div>
+        <div class="flex md:flex-row flex-col gap-y-4 md:gap-x-5 md:gap-y-0 w-full">
+          <div class="w-full md:w-1/2">
+            <label for="coin" class="block font-medium text-gray-700 cursor-pointer">Cryptocurrency Wallets</label>
+            <select required name="coin" id="coin" class="mt-1 mb-4 px-4 pr-10 border focus:border-primaryGreen border-black/10 rounded-md focus:outline-none w-full h-12 cursor-pointer">
+              <option value="">Select Coin</option>
+              <option value="bitcoin">Bitcoin</option>
+              <option value="tron">Tron</option>
+              <option value="ethereum">Ethereum</option>
+              <option value="trc20">USDT Trc20</option>
+            </select>
+          </div>
+          <div class="w-full md:w-1/2">
+            <%- include('partials/_input.ejs', { type: 'text', id: 'walletAddress', name: 'walletAddress', label: 'Wallet Address', placeholder: 'Enter your new wallet address', required: false }) %>
+          </div>
+        </div>
+        <label for="gender" class="block font-medium text-gray-700">Gender</label>
+        <select id="gender" name="gender" class="mb-4 px-4 pr-10 border focus:border-primaryGreen border-black/10 rounded-md focus:outline-none w-full h-11 cursor-pointer">
+          <option value="" disabled selected><%= userProfile?.gender || "Select Gender" %></option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <%- include('partials/_button.ejs', { type: 'submit', label: 'Update Profile', icon: '👤', disabled: false }) %>
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>

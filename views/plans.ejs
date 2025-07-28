@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plans</title>
+  <%- include("partials/_seo"); -%>
+</head>
+
+<body class="bg-offWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { currentPage }); -%>
+
+  <p class="m-4 font-bold text-lightBlack text-lg md:text-xl lg:text-2xl xl:text-3xl">Our Membership Plans</p>
+
+  <!-- Container -->
+  <div class="p-4">
+
+    <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">View our plans</p>
+    <p class="text-darkGreen">Choose the one tailored best to your current financial need.</p>
+    <div class="mt-10">
+      <%- include("partials/_plans"); -%>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<div class="bg-white shadow-md border border-black/10 rounded-xl w-full max-w-sm overflow-hidden">
+  <img src="<%= image %>" alt="<%= title %> Image" class="w-full h-52 object-cover" />
+
+  <div class="p-4">
+    <h3 class="mb-1 font-bold text-primaryGreen text-lg"><%= title %></h3>
+
+    <ul class="space-y-1 mb-3 pl-4 text-neutral-600 list-disc">
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Rate: <%= rate %></li>
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Duration: <%= duration %></li>
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Min Deposit: <%= minDeposit %></li>
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Max Deposit: <%= maxDeposit %></li>
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> ROI: <%= roi %></li>
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Referral: <%= referral %></li>
+      <li class="flex items-center"><i class="mr-2 text-accentGreen ph-check-circle ph-duotone"></i> Bonus: <%= bonus %></li>
+    </ul>
+
+    <p class="mb-3 text-neutral-500 text-xs italic"><%= summary %></p>
+
+    <div class="flex items-center mb-3 font-bold text-neutral-800 text-xs md:text-sm xl:text-base">
+      <i class="mr-1 text-accentGreen ph-duotone ph-money-wavy"></i>
+      Min: $<%= minDeposit.replace('USD', '') %> &nbsp; | &nbsp; ROI: <%= roi %>
+    </div>
+
+    <a href="/user/invest" class="block bg-accentGreen hover:bg-green-700 py-2 rounded-md w-full text-white text-center transition duration-300">
+      Choose Plan
+    </a>
+  </div>
+</div>

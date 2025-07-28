@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #ffffff;
+    }
+
+    .logo {
+      width: 40px;
+      margin-bottom: 20px;
+    }
+
+    .greeting {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: left;
+      color: #eab308;
+    }
+
+    .message {
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .cta-button {
+      display: block;
+      margin: 30px 0;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #ffffff;
+      border: 2px solid #eab308;
+      color: #eab308;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      background-color: #eab308;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="logo" src="https://res.cloudinary.com/dpmx02shl/image/upload/v1753363241/palmsector.png" alt="Logo" />
+      <h4 class="greeting">Dear <%= name %>,</h4>
+    </div>
+    <div class="message">
+      <p>We wanted to send a quick note to express our sincere gratitude for referring <%= amount %> to Palm Sector!</p>
+      <p>
+        We're thrilled they've joined our community and started using website, and we know they'll find valuable resources and tools they need to succeed.
+        Your support means the world to us and helps us grow. We really appreciate you spreading the word!
+      </p>
+      <p>
+        If you have any questions or need assistance, please don't hesitate to
+        contact us. We are always happy to help. Best regards
+      </p>
+    </div>
+    <a class="cta-button" href="https://www.palmsector.ltd/user/dashboard">Access Your Dashboard</a>
+    <div class="footer">
+      <p>&copy; <%= year %>. All rights reserved.</p>
+      <p>
+        For inquiries, please contact our support center at
+        <a href="mailto:support@palmsector.ltd">support@palmsector.ltd</a>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

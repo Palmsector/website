@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/_nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/bg.jpg', heading: 'Services', subtext: 'Home'}); -%>
+  <section id="heroSection">
+    <%- include("partials/services/_heroSection.ejs"); -%>
+  </section>
+  <section id="tailored">
+    <%- include("partials/services/_tailored"); -%>
+  </section>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>

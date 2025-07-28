@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/index.js"></script>
+  <script defer src="../JS/faq.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/_nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/faqPage.jpg', heading: 'FAQs', subtext: 'Home'}); -%>
+  <section class="mx-auto container">
+    <div class="flex flex-col gap-y-10 px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24 xl:px-20 py-20">
+      <div class="flex md:flex-row flex-col md:justify-between gap-y-5">
+        <div class="w-full md:w-[40%] xl:w-[30%]">
+          <div class="inline-flex items-center bg-gradient-to-r from-yellow-100 to-yellow-50 shadow-sm mb-8 px-6 py-3 border border-yellow-200 rounded-full">
+            <span class="font-semibold text-[10px] text-slate-800 md:text-xs xl:text-sm">Comprehensive Answers</span>
+          </div>
+          <div class="flex flex-col gap-y-3">
+            <p class="font-bold text-lg sm:text-xl md:text-2xl xl:text-3xl">General Farm FAQs</p>
+            <p class="text-black/70">General Frequently Asked Questions: Insights and Clarifications for Farmers</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full md:w-[55%] xl:w-[68%]">
+          <button class="collapsible">
+            What is Palm Sector?
+          </button>
+          <div class="content">
+            <p class="my-4">
+             Palm Sector is a collaborative network of agricultural specialists and farm enterprises that have united to pursue collective farm growth and enhance market stability for its members. The organization was established as a trusted entity following significant agricultural challenges in 2010, aiming to support farmers globally.
+            </p>
+          </div>
+          <button class="collapsible">
+            What types of crops or farm ventures does Palm Sector support?
+          </button>
+          <div class="content">
+            <p class="my-4">
+              Currently, Palm Sector's supported crop types and farm ventures are not explicitly defined within the provided documentation. For detailed information, please contact our farmer support team.
+            </p>
+          </div>
+          <button class="collapsible">
+            How does Palm Sector ensure the success and security of member farms?
+          </button>
+          <div class="content">
+            <p class="my-4">
+             Palm Sector operates as a trusted agricultural collaboration body. Further details regarding specific agronomic support, market access strategies, and risk mitigation protocols can be obtained by contacting our farmer support.
+            </p>
+          </div>
+          <button class="collapsible">
+            How do I begin collaborating with Palm Sector?
+          </button>
+          <div class="content">
+            <p class="my-4">
+              The process for initiating a partnership with Palm Sector requires direct communication with our farmer support team. Please contact us for personalized guidance.
+            </p>
+          </div>
+          <button class="collapsible">
+            Are there any fees associated with receiving support or services?
+          </button>
+          <div class="content">
+            <p class="my-4">
+              Information regarding service or support fees is not currently specified. Please contact farmer support for complete fee schedules.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex md:flex-row flex-col md:justify-between gap-y-5">
+        <div class="w-full md:w-[40%] xl:w-[30%]">
+          <div class="flex flex-col gap-y-3">
+            <p class="font-bold text-darkNavy text-lg sm:text-xl md:text-2xl xl:text-3xl">Collaboration FAQs</p>
+            <p class="text-black/70">Collaboration Frequently Asked Questions: Insights and Clarifications for Farmers</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full md:w-[55%] xl:w-[68%]">
+          <button class="collapsible">
+            What is the procedure for realizing profits from my farm's collaboration with Palm Sector?
+          </button>
+          <div class="content">
+            <p class="my-4">
+              Detailed procedures for realizing profits or securing market access are available when you create your account, or you can go through direct consultation with our farmer support team.
+            </p>
+          </div>
+          <button class="collapsible">
+            What is the minimum collaboration threshold to join Palm Sector?
+          </button>
+          <div class="content">
+            <p class="my-4">
+              The minimum collaboration threshold or initial contribution is not explicitly stated. Please contact farmer support for current requirements.
+            </p>
+          </div>
+          <button class="collapsible">
+            Can I participate in multiple agricultural initiatives or programs with Palm Sector?
+          </button>
+          <div class="content">
+            <p class="my-4">
+              Information regarding multiple program participation is not detailed in the provided documentation. Please contact farmer support for clarification.
+            </p>
+          </div>
+          <button class="collapsible">
+            How does Palm Sector protect my farm data and personal information?
+          </button>
+          <div class="content">
+            <p class="my-4">
+             Palm Sector adheres to data protection protocols. For detailed information regarding our privacy policies, please contact our farmer support.
+            </p>
+          </div>
+          <button class="collapsible">
+            How does Palm Sector generate benefits for its members?
+          </button>
+          <div class="content">
+            <p class="my-4">
+             Palm Sector's benefit generation model involves the distribution of knowledge, growth of market opportunities, and enhanced farm productivity. Specific details regarding collaboration strategies are available upon request through farmer support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include("partials/faqs/_educational"); -%>
+  <%- include("partials/_footer"); -%>
+</body>
+
+</html>

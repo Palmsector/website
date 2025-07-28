@@ -1,0 +1,57 @@
+<div class="relative mb-4 w-full" id="country-dropdown">
+  <label class="font-medium text-slate-800 cursor-pointer">
+    Country <span class="text-red-500">*</span>
+  </label>
+
+  <button type="button" class="flex justify-between items-center mt-1 px-4 py-3 border focus:border-accentGreen border-black/10 rounded-md focus:outline-none w-full" onclick="toggleCountryDropdown()">
+    <div class="flex items-center gap-2">
+      <img id="selected-flag" src="/flags/<%= Object.keys(countries)[0] %>.png" alt="<%= countries[Object.keys(countries)[0]] %>" class="border rounded w-5 h-4 object-cover" />
+      <span id="selected-name" class="text-gray-800"><%= countries[Object.keys(countries)[0]] %></span>
+    </div>
+    <span class="ml-auto transition-transform duration-300" id="arrow-icon">▼</span>
+  </button>
+
+  <ul id="country-options" class="hidden z-[2] absolute bg-white shadow-md mt-2 border rounded-2xl w-full max-h-60 overflow-y-auto">
+    <% for (const code in countries) { %>
+    <li class="flex items-center gap-2 hover:bg-gray-100 px-4 py-2 cursor-pointer" onclick="selectCountry('<%= code %>', '<%= countries[code] %>')">
+      <img src="/flags/<%= code %>.png" alt="<%= countries[code] %>" class="border rounded w-5 h-4 object-cover" />
+      <span class="text-gray-600 text-sm"><%= countries[code] %></span>
+    </li>
+    <% } %>
+  </ul>
+
+  <!-- Hidden input to submit selected country -->
+  <input type="hidden" name="country" id="selected-country" value="<%= countries[Object.keys(countries)[0]] %>">
+</div>
+
+<script>
+  let isOpen = false;
+
+  function toggleCountryDropdown() {
+    const options = document.getElementById('country-options');
+    const arrow = document.getElementById('arrow-icon');
+
+    isOpen = !isOpen;
+    options.classList.toggle('hidden', !isOpen);
+    arrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+
+  function selectCountry(code, name) {
+    document.getElementById('selected-flag').src = `/flags/${code}.png`;
+    document.getElementById('selected-flag').alt = name;
+    document.getElementById('selected-name').textContent = name;
+    document.getElementById('selected-country').value = name;
+
+    toggleCountryDropdown(); // Close dropdown
+  }
+
+  // Optional: Close dropdown if clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('country-dropdown');
+    if (!dropdown.contains(event.target)) {
+      document.getElementById('country-options').classList.add('hidden');
+      document.getElementById('arrow-icon').style.transform = 'rotate(0deg)';
+      isOpen = false;
+    }
+  });
+</script>

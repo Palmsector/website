@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Verify Your Email</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .logo {
+      width: 40px;
+      margin-bottom: 20px;
+    }
+
+    .greeting {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #eab308;
+      text-align: left;
+    }
+
+    .message {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background: #eab308;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: #eab308;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      margin-top: 40px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="logo" src="https://res.cloudinary.com/dpmx02shl/image/upload/v1753363241/palmsector.png" alt="Logo" />
+      <h4 class="greeting">Dear <%= name %>,</h4>
+    </div>
+    <div class="message">
+      <p>Welcome to Prime Peak!</p>
+      <p>Please verify your email address to activate your account.</p>
+      <div style="text-align: center;">
+        <a class="cta-button" href="<%= code %>">Verify Email</a>
+      </div>
+      <p>If you didn't request this, please ignore this email.</p>
+    </div>
+    <div class="footer">
+      <p>&copy; <%= year %>. All rights reserved.</p>
+      <p>Contact support: <a href="mailto:support@palmsector.ltd">support@palmsector.ltd</a></p>
+    </div>
+  </div>
+</body>
+
+</html>

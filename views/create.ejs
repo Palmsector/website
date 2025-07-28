@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <%-include("partials/_seo");-%>
+  <!-- Password Field Script -->
+  <script defer src="../JS/auth.js"></script>
+</head>
+
+<body class="text-xs md:text-sm xl:text-base">
+  <%- include('partials/_alert') %>
+  <section class="flex lg:flex-row flex-col-reverse gap-y-10 p-4 sm:p-6 md:p-8 lg:p-0 h-dvh">
+    <div class="flex flex-col justify-center items-center lg:w-1/2 h-full lg:text-left text-center">
+      <div class="mx-auto w-[95%] sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
+        <div class="lg:hidden mx-auto mb-4 size-10 sm:size-12 md:size-14">
+          <img src="../Images/logo.png" alt="Palm Sector Logo">
+        </div>
+        <h1 class="font-semibold text-primaryGreen text-xl md:text-2xl lg:text-3xl xl:text-4xl">Create Account</h1>
+        <p class="text-gray-500">Enter Your details to create an account.</p>
+        <form id="myForm" action="/create" method="POST" class="bg-white/10 shadow-xl mt-4 px-4 py-6 border border-neutral-200 rounded-3xl w-full text-left">
+          <%- include('partials/_input.ejs', { type:'email', id: 'email', name: 'email', label: 'Email', placeholder: 'Enter your email address', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'text', id: 'fullName', name: 'fullName', label: 'Full Name', placeholder: 'Enter your full name', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'text', id: 'username', name: 'username', label: 'Username', placeholder: 'Enter your username', required: true }) %>
+          <%- include('partials/_input.ejs', { type:'password', id: 'password', name: 'password', label: 'Password', placeholder: 'Enter your Password', required: true }) %>
+          <input type="hidden" name="role" value="<%= role %>">
+          <input type="hidden" name="referral" value="<%= referral %>">
+          <%- include('partials/_countrydropdown.ejs', {countries: countries }) %>
+
+          <a href="/policies" class="text-gray-500 hover:text-accentGreen duration-300">By signing up, you agree to our terms of service, privacy and anti-spam policies.</a>
+          <%- include('partials/_button.ejs', { type: 'submit', label: 'Create Account', icon: '✍️', disabled: false }) %>
+        </form>
+        <div class="flex justify-between items-center gap-x-5 mt-4">
+          <p class="text-gray-500">Have an account? <span class="text-black hover:text-yellow-500 duration-300"><a href="/login">Login</a></span></p>
+          <p class="text-black hover:text-yellow-500 duration-300"><a href="/forgot">Forgot Password?</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="hidden lg:block relative p-4 lg:w-1/2 h-full">
+      <!-- Background image -->
+      <img src="../Images/heroImg.jpg" alt="Image" class="rounded-3xl w-full h-full object-cover">
+
+      <!-- Logo -->
+      <div class="top-10 left-10 absolute bg-white p-2 rounded-lg size-10">
+        <img src="../Images/logo.png" alt="Palm Sector Logo">
+      </div>
+
+      <!-- Glass Quote Overlay -->
+      <div class="bottom-10 left-1/2 absolute bg-white/10 shadow-xl backdrop-blur-md p-6 border border-white/30 rounded-xl w-[90%] max-w-xl text-white text-center -translate-x-1/2">
+        <p id="quote-text" class="italic">"Agriculture is our wisest pursuit, because it will in the end contribute most to real wealth, good morals, and happiness."</p>
+        <p id="quote-author" class="mt-2 font-semibold">— Thomas Jefferson</p>
+
+        <!-- Navigation buttons -->
+        <div class="flex justify-between items-center mt-4">
+          <button id="prev-quote" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-white transition">Prev</button>
+          <button id="next-quote" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-white transition">Next</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const quotes = [{
+          text: "Agriculture is our wisest pursuit, because it will in the end contribute most to real wealth, good morals, and happiness.",
+          author: "Thomas Jefferson"
+        },
+        {
+          text: "If agriculture goes wrong, nothing else will have a chance to go right.",
+          author: "M. S. Swaminathan"
+        },
+        {
+          text: "Investing in agriculture is investing in the future of food, a resilient economy, and a healthier planet.",
+          author: "(Attributed)"
+        },
+        {
+          text: "To make agriculture sustainable, the grower has got to be able to make a profit.",
+          author: "Sam Farr"
+        },
+        {
+          text: "We don't have to engage in grand, heroic actions to participate in change. Small acts, when multiplied by millions of people, can transform the world.",
+          author: "Howard Zinn"
+        },
+        {
+          text: "Earth provides enough to satisfy every man's needs, but not every man's greed.",
+          author: "Mahatma Gandhi"
+        },
+        {
+          text: "It is only the farmer who faithfully plants seeds in the Spring, who reaps a harvest in the Autumn",
+          author: "B. C. Forbes"
+        },
+        {
+          text: "Agriculture is the most healthful, most useful and most noble employment of man.",
+          author: "George Washington"
+        },
+        {
+          text: "The cities are but the branches of the tree of national life, the roots of which go deeply into the land. We all flourish or decline with the farmer",
+          author: "Bernard Baruch"
+        },
+        {
+          text: "I believe that agriculture land - productive agricultural land with water on site - will be valuable in the future",
+          author: "Michael Burry"
+        },
+      ];
+
+      let current = 0;
+      const quoteText = document.getElementById("quote-text");
+      const quoteAuthor = document.getElementById("quote-author");
+
+      const updateQuote = () => {
+        quoteText.textContent = `"${quotes[current].text}"`;
+        quoteAuthor.textContent = `— ${quotes[current].author}`;
+      };
+
+      document.getElementById("next-quote").addEventListener("click", () => {
+        current = (current + 1) % quotes.length;
+        updateQuote();
+      });
+
+      document.getElementById("prev-quote").addEventListener("click", () => {
+        current = (current - 1 + quotes.length) % quotes.length;
+        updateQuote();
+      });
+
+      updateQuote();
+    });
+  </script>
+
+</body>
+
+</html>

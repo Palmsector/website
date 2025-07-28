@@ -1,0 +1,51 @@
+<button id="sidebar-toggle" class="lg:hidden top-5 left-4 z-30 fixed flex justify-center items-center bg-yellow-600 rounded-lg focus:outline-none size-8 text-white" onclick="toggleSidebar()">
+  <i class="text-2xl ph-list ph"></i>
+</button>
+
+<!-- Overlay -->
+<div id="overlay" class="hidden lg:hidden z-30 fixed inset-0 bg-black bg-opacity-50 transition-transform duration-500 ease-in-out"></div>
+
+<!-- Sidebar Container -->
+<aside id="sidebar" class="top-0 left-0 z-40 fixed bg-offWhite p-4 border-yellow-500 border-r w-[280px] h-dvh overflow-y-auto text-black text-xs md:text-sm xl:text-base transition-transform -translate-x-full lg:translate-x-0 duration-300 ease-in-out transform">
+  <div class="flex items-center gap-x-5">
+    <img class="bg-slate-900 p-1.5 rounded-lg w-6" src="../Images/logo.png" alt="Logo">
+    <p class="font-semibold text-xl">Administration</p>
+    <div class="flex justify-center items-center bg-white rounded-[50%] size-6 text-black cursor-pointer" onclick="toggleSidebar()"><i class="lg:hidden ph-caret-left ph-fill"></i><i class="hidden lg:block ph-caret-right ph-fill"></i></div>
+  </div>
+
+  <div class="flex flex-col gap-y-5 mt-10">
+    <a onclick="toggleSidebar()" href="/admin/dashboard" class="<%= currentPage === '/dashboard' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-squares-four"></i> Dashboard</a>
+    <a onclick="toggleSidebar()" href="/admin/deposit" class="<%= currentPage === '/deposit' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-hand-deposit"></i> Deposit</a>
+    <a onclick="toggleSidebar()" href="/admin/withdrawal" class="<%= currentPage === '/withdrawal' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-hand-withdraw"></i> Withdraw</a>
+    <a onclick="toggleSidebar()" href="/admin/bonus" class="<%= currentPage === '/bonus' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-plus-circle"></i> Bonus</a>
+    <hr class="bg-black/20 h-0.5">
+    <a onclick="toggleSidebar()" href="/admin/penalty" class="<%= currentPage === '/penalty' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-minus-circle"></i> Penalty</a>
+    <a onclick="toggleSidebar()" href="/admin/investment" class="<%= currentPage === '/investment' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-treasure-chest"></i> Investment</a>
+    <a onclick="toggleSidebar()" href="/admin/investors" class="<%= currentPage === '/investors' ? 'bg-yellow-600 font-bold text-white' : 'font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5"><i class="text-2xl ph-fill ph-users-three"></i> Investors</a>
+    <form action="/logout" method="post">
+      <button type="submit" class="font-medium hover:bg-yellow-600 hover:text-white duration-300' %> rounded-lg p-3 flex items-center gap-x-5 mb-14 w-full"><i class="text-2xl ph-fill ph-sign-out"></i> Logout</button>
+    </form>
+  </div>
+
+</aside>
+
+<!-- Add Scripts -->
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const isClosed = sidebar.classList.contains('-translate-x-full');
+
+    if (isClosed) {
+      overlay.classList.remove('hidden');
+      overlay.classList.add('translate-x-0');
+      setTimeout(() => sidebar.classList.remove('-translate-x-full'), 500);
+    } else {
+      sidebar.classList.add('-translate-x-full');
+      setTimeout(() => overlay.classList.add('hidden', 'translate-x-0'), 500);
+    }
+  }
+
+  document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+  document.getElementById('overlay').addEventListener('click', toggleSidebar);
+</script>

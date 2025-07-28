@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment</title>
+  <%- include("partials/_seo"); -%>
+  <script defer src="../JS/auth.js"></script>
+</head>
+
+<body class="bg-offWhite text-xs md:text-sm xl:text-base main">
+  <%- include("partials/_header", { userName: user.fullName }); -%>
+  <%- include("partials/_userSidebar", { currentPage }); -%>
+  <%- include('partials/_alert') %>
+  <section class="flex flex-row justify-between items-center m-4">
+    <div>
+      <p class="font-bold text-lightBlack text-lg md:text-xl lg:text-2xl xl:text-3xl">Investment</p>
+      <p class="text-neutral-500">Start and Manage all your investments.</p>
+    </div>
+    <div>
+      <p class="text-gray-700">Your Balance</p>
+      <h2 class="font-bold text-primaryGreen text-lg md:text-xl lg:text-2xl xl:text-3xl text-center">$<%= userBalance %></h2>
+    </div>
+  </section>
+  <section class="p-4">
+    <div class="bg-white mt-4 p-4 border border-[#767680] border-opacity-10 rounded-2xl">
+      <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">Grow your Portfolio</p>
+      <p class="text-darkGreen">Start a new investment.</p>
+
+      <!-- Tabs -->
+      <div class="flex gap-2 md:gap-4 my-6">
+        <button type="button" class="tab-btn active-tab" data-tab="standard">Standard</button>
+        <button type="button" class="tab-btn" data-tab="halal">Halal</button>
+        <button type="button" class="tab-btn" data-tab="realestate">Real Estate</button>
+      </div>
+
+      <form id="myForm" action="/user/invest" method="POST" class="mt-10 w-full text-left">
+        <label for="investmentPlan" class="block font-medium text-gray-700">Choose an Investment Plan:</label>
+        <div id="standard" class="block tab-content">
+          <select name="investmentPlan" id="investmentPlan" class="mt-1 mb-4 px-4 pr-10 border focus:border-primaryGreen border-black/10 rounded-md focus:outline-none w-full h-11 cursor-pointer">
+            <option value="">Select Your Desired Plan</option>
+            <option value="test scheme">Test Scheme ($100 - $999, 3.5% profit for 7 days)</option>
+            <option value="starters scheme">Starters Scheme ($1000 - $4999, 4% profit for 14 days)</option>
+            <option value="professional scheme">Professional Scheme ($5000 - $24999, 4.5% profit for 35 days)</option>
+            <option value="premium scheme">Premium Scheme ($25000 - $49999, 5% profit for 30 days)</option>
+            <option value="veteran trade">Veteran Trade ($50000 - $99999, 5.5% profit for 38 days)</option>
+            <option value="supreme">Supreme ($100000 - $1000000, 6% profit for 45 days)</option>
+          </select>
+        </div>
+        <div id="halal" class="hidden tab-content">
+          <select name="investmentPlan" id="investmentPlan" class="mt-1 mb-4 px-4 pr-10 border focus:border-primaryGreen border-black/10 rounded-md focus:outline-none w-full h-11 cursor-pointer">
+            <option value="">Select Your Desired Plan</option>
+            <option value="halal trial">Halal Trial ($100 - $500, 0.8% profit for 365 days)</option>
+            <option value="halal step 1">Halal Step 1 ($500 - $10000, 7% profit for 365 days)</option>
+            <option value="halal step 2">Halal Step 2 ($5000 - $100000, 1.5% profit for 100 days)</option>
+            <option value="halal step 3">Halal Step 3 ($500000 - $1000000, 10% profit for 30 days)</option>
+          </select>
+        </div>
+        <div id="realestate" class="hidden tab-content">
+          <select name="investmentPlan" id="investmentPlan" class="mt-1 mb-4 px-4 pr-10 border focus:border-primaryGreen border-black/10 rounded-md focus:outline-none w-full h-11 cursor-pointer">
+            <option value="">Select Your Desired Plan</option>
+            <option value="holiday luxury apartment vi">Holiday Luxury Apartment VI ($200000 - $500000, 6% profit for 365 days)</option>
+            <option value="holiday luxury apartment v">Holiday Luxury Apartment V ($180000 - $400000, 5.5% profit for 365 days)</option>
+            <option value="holiday luxury apartment iv">Holiday Luxury Apartment IV ($150000 - $350000, 5% profit for 365 days)</option>
+            <option value="holiday luxury apartment iii">Holiday Luxury Apartment III ($175000 - $320000, 4% profit for 365 days)</option>
+            <option value="holiday luxury apartment ii">Holiday Luxury Apartment II ($100000 - $180000, 3% profit for 365 days)</option>
+            <option value="holiday luxury apartment">Holiday Luxury Apartment ($50000 - $250000, 2% profit for 365 days)</option>
+          </select>
+        </div>
+        <%- include('partials/_input.ejs', { type:'number', id: 'amount', name: 'amount', label: 'Investment Amount', placeholder: 'Enter Investment amount', required: true }) %>
+        <%- include('partials/_amountInput.ejs', { type: 'number', id: 'amount', name: 'amount', label: 'Investment Amount', placeholder: `Enter Investment amount`, required: true, quickSelect: [200, 500, 1000, 2000, 5000, 'max'], maxValue: 10000000}) %>
+        <div id="errorMessage" class="hidden mt-2 text-red-500"></div>
+        <%- include('partials/_button.ejs', { type: 'submit', label: 'Start Investment', icon: '🌱', disabled: false }) %>
+      </form>
+    </div>
+    <div class="bg-white mt-6 p-4 border border-[#767680] border-opacity-10 rounded-2xl">
+      <h2 class="mb-4 font-bold text-lightBlack text-sm md:text-base xl:text-lg">Running Investments</h2>
+      <div class="h-80 overflow-y-auto">
+        <% if (investments.length === 0) { %>
+        <section class="flex sm:flex-row flex-col justify-between gap-y-5 sm:gap-y-0 shadow-md mb-4 p-4 rounded-lg">
+          <div>
+            <h2 class="mb-2 font-bold text-primaryGreen text-sm md:text-base xl:text-lg">No Running Investments</h2>
+            <p class="text-gray-700">You currently have no active investments.</p>
+          </div>
+          <div>
+            <p class="mb-2 text-gray-700">Total Investments.</p>
+            <h2 class="font-bold text-primaryGreen text-sm md:text-base xl:text-lg sm:text-center"><%= totalInvestments %></h2>
+          </div>
+        </section>
+        <% } %>
+        <% investments.forEach(investment => { %>
+        <div class="bg-primaryGreen/10 shadow-lg mb-4 p-4 border border-gray-200 rounded-lg">
+          <!-- Plan Details -->
+          <div class="gap-4 grid grid-cols-2 text-gray-700">
+            <div>
+              <p class="flex items-center font-medium text-sm md:text-base xl:text-lg">
+                <i class="text-primaryGreen ph-fill ph-rocket-launch"></i> Plan:
+              </p>
+              <p class="capitalize"><%= investment.plan %> Plan</p>
+            </div>
+            <div>
+              <p class="flex items-center font-medium text-sm md:text-base xl:text-lg">
+                <i class="text-primaryGreen ph-calendar ph-fill"></i> Start Date:
+              </p>
+              <p>
+                <%= new Date(investment.startDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  }) %>
+              </p>
+            </div>
+            <div>
+              <p class="flex items-center font-medium text-sm md:text-base xl:text-lg">
+                <i class="text-primaryGreen ph-calendar-check ph-fill"></i>End Date:
+              </p>
+              <p>
+                <%= new Date(investment.endDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  }) %>
+              </p>
+            </div>
+            <div>
+              <p class="flex items-center font-medium text-sm md:text-base xl:text-lg">
+                <i class="text-primaryGreen ph-currency-dollar ph-fill"></i> Amount:
+              </p>
+              <p>$<%= investment.amount.toFixed(2) %></p>
+            </div>
+            <div>
+              <p class="flex items-center font-medium text-sm md:text-base xl:text-lg">
+                <i class="text-primaryGreen ph-fill ph-seal-percent"></i> Daily Percent:
+              </p>
+              <p><%= investment.dailyPercent %>%</p>
+            </div>
+            <div>
+              <p class="flex items-center font-medium text-sm md:text-base xl:text-lg">
+                <i class="text-primaryGreen ph-fill ph-money-wavy"></i> Payout:
+              </p>
+              <p>
+                $<%= investment.payoutAmount.toFixed(2) %>
+                <span class="text-gray-500">(on completion)</span>
+              </p>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div class="mt-6">
+            <p class="flex items-center text-gray-500 text-md">
+              <i class="text-primaryGreen fa-info-circle fas"></i>
+              Your investment is actively RUNNING. Check back after the end date for updates.
+            </p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      const investmentPlan = document.getElementById('investmentPlan').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+      const errorMessage = document.getElementById('errorMessage');
+
+      // Define the plan limits
+      const plans = {
+        "test scheme": { min: 100,max: 999 },
+        "starters scheme": { min: 1000,max: 4999 },
+        "professional scheme": { min: 5000, max: 24999 },
+        "premium scheme": { min: 25000, max: 49999 },
+        "veteran trade": { min: 50000, max: 99999 },
+        supreme: { min: 100000, max: 1000000 },
+        "halal trial": { min: 100, max: 500 },
+        "halal step 1": { min: 500, max: 10000 },
+        "halal step 2": { min: 5000, max: 100000 },
+        "halal step 3": { min: 500000, max: 1000000 },
+        "holiday luxury apartment vi": { min: 200000, max: 500000 },
+        "holiday luxury apartment v": { min: 180000, max: 400000 },
+        "holiday luxury apartment iv": { min: 150000, max: 350000 },
+        "holiday luxury apartment iii": { min: 175000, max: 320000 },
+        "holiday luxury apartment ii": { min: 100000, max: 180000 },
+        "holiday luxury apartment": { min: 50000, max: 250000 },
+      }
+
+      // Validate amount
+      const {
+        min,
+        max
+      } = plans[investmentPlan];
+      if (amount < min || amount > max) {
+        e.preventDefault(); // Prevent form submission
+        errorMessage.textContent = `The amount must be between $${min.toLocaleString()} and $${max.toLocaleString()} for the ${investmentPlan.charAt(0).toUpperCase() + investmentPlan.slice(1)} Plan.`;
+        errorMessage.classList.remove('hidden');
+        setTimeout(() => location.reload(), 3000);
+      } else {
+        errorMessage.classList.add('hidden');
+      }
+    });
+  </script>
+  <!-- Toggle Script -->
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+
+        // Toggle active class
+        tabs.forEach(t => t.classList.remove('active-tab'));
+        tab.classList.add('active-tab');
+
+        // Show/hide tab content
+        contents.forEach(content => {
+          content.classList.add('hidden');
+          content.classList.remove('block');
+          if (content.id === target) {
+            content.classList.remove('hidden');
+            content.classList.add('block');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
