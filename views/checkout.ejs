@@ -14,17 +14,20 @@
   <%- include("partials/_header", { userName: user.fullName }); -%>
   <%- include("partials/_userSidebar", { currentPage }); -%>
   <%- include('partials/_alert') %>
-  <p class="m-4 font-bold text-lightBlack text-lg md:text-xl lg:text-2xl xl:text-3xl">Checkout</p>
+  <div>
+    <p class="m-4 font-bold text-lightBlack text-lg md:text-xl lg:text-2xl xl:text-3xl">Checkout</p>
+    <p class="text-neutral-500">Finalize your <span class="uppercase"><%= coin === "trc20" ? "USDT TRC20" : coin %></span> deposit to your account.</p>
+  </div>
 
   <section class="p-4">
     <div class="bg-white p-4 border border-[#767680] border-opacity-10 rounded-2xl">
-        <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg capitalize"><%= coin === "trc20" ? "USDT TRC20" : coin %> Wallet</p>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <p id="wallet" class="font-medium break-all"><%= wallet %></p> 
-            <i class="text-darkGreen text-xl md:text-2xl xl:text-3xl cursor-pointer ph-copy ph" onclick="copy('wallet')"></i>
-        </div>
-        <img src="../Images/<%= coin %>.jpg" alt="BTC QR Code" class="mt-4 w-36 md:w-44 xl:w-52">
-        <p class="mt-1 text-[10px] text-gray-500 md:text-xs xl:text-sm">You can also scan the QR Code for easy access to the wallet information.</p>
+      <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg capitalize"><%= coin === "trc20" ? "USDT TRC20" : coin %> Wallet</p>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <p id="wallet" class="font-medium break-all"><%= wallet %></p>
+        <i class="text-darkGreen text-xl md:text-2xl xl:text-3xl cursor-pointer ph-copy ph" onclick="copy('wallet')"></i>
+      </div>
+      <img src="../Images/<%= coin %>.jpg" alt="BTC QR Code" class="mt-4 w-36 md:w-44 xl:w-52">
+      <p class="mt-1 text-[10px] text-gray-500 md:text-xs xl:text-sm">You can also scan the QR Code for easy access to the wallet information.</p>
     </div>
     <div class="bg-white mt-4 p-4 border border-[#767680] border-opacity-10 rounded-2xl">
       <p class="font-bold text-lightBlack text-sm md:text-base xl:text-lg">Cryptocurrency Funding Method</p>

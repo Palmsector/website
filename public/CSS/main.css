@@ -2884,7 +2884,7 @@ video {
 }
 
 body {
-  font-family: 'Inter', serif;
+  font-family: "Inter", serif;
   font-optical-sizing: auto;
 }
 
@@ -2935,11 +2935,11 @@ body {
 }
 
 .collapsible.active {
-  color: #28A745;
+  color: #28a745;
 }
 
 .collapsible:after {
-  content: '\002B';
+  content: "\002B";
   color: black;
   font-weight: bolder;
   float: right;
@@ -2947,8 +2947,8 @@ body {
 }
 
 .active:after {
-  content: '\2212';
-  color: #28A745;
+  content: "\2212";
+  color: #28a745;
 }
 
 .content {
@@ -2966,7 +2966,7 @@ body {
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
+  border-color: rgb(40 167 69 / var(--tw-border-opacity, 1));
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -2980,7 +2980,9 @@ body {
 
 .tab-btn:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1));
+  background-color: rgb(40 167 69 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -3030,18 +3032,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #28A745;
+  background: #28a745;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #145A32;
+  background: #145a32;
 }
 
 /* For Firefox */
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #28A745 #f4f6ff;
+  scrollbar-color: #28a745 #f4f6ff;
 }
 
 .placeholder\:font-light::-moz-placeholder {

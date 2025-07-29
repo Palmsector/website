@@ -17,7 +17,10 @@ import referralWithdrawalServices from "../services/referralWithdrawal.services.
 //Utils and Enums
 import { Email } from "../utils/mail.util.js";
 import { sendEmail } from "../utils/adminMail.util.js";
-import { calculateUserBalance, calculateReferralBalance } from "../utils/calculateBalance.js";
+import {
+  calculateUserBalance,
+  calculateReferralBalance,
+} from "../utils/calculateBalance.js";
 import { getCryptoAddress } from "../utils/getWallet.util.js";
 import { formatDateWithTime } from "../utils/format.utils.js";
 import { plans } from "../enums/index.js";
@@ -83,7 +86,8 @@ class UserController {
       currentPage: req.url,
       deposits: userDetails.Deposits,
       userBalance,
-      minimum: parseFloat(process.env.MINIMUM_DEPOSIT)
+      minimum: parseFloat(process.env.MINIMUM_DEPOSIT),
+      formatDateWithTime,
     });
   }
 
@@ -250,7 +254,9 @@ class UserController {
         req.flash("message", {
           error: true,
           title: "Investment Failed",
-          description: `You need to deposit $${(parseFloat(amount) - parseFloat(userBalance)).toLocaleString()} 
+          description: `You need to deposit $${(
+            parseFloat(amount) - parseFloat(userBalance)
+          ).toLocaleString()} 
           in order to invest in the entered amount in ${
             investmentPlan.charAt(0).toUpperCase() + investmentPlan.slice(1)
           } Plan.`,
@@ -313,7 +319,8 @@ class UserController {
       currentPage: req.url,
       withdrawals: userDetails.Withdrawals,
       userBalance,
-      minimum: parseFloat(process.env.MINIMUM_WITHDRAWAL)
+      minimum: parseFloat(process.env.MINIMUM_WITHDRAWAL),
+      formatDateWithTime,
     });
   }
 
@@ -444,7 +451,7 @@ class UserController {
   async renderHistory(req, res) {
     const userBalance = res.locals.userBalance;
     const userDetails = res.locals.userDetails;
-    console.log("User Details", userDetails)
+    console.log("User Details", userDetails);
     const allTransactions = [
       ...userDetails.Deposits,
       ...userDetails.Withdrawals,
@@ -466,6 +473,7 @@ class UserController {
       withdrawals: userDetails.Withdrawals,
       userBalance,
       transactions: sortedTransactions,
+      formatDateWithTime,
     });
   }
 
@@ -505,7 +513,9 @@ class UserController {
         transaction = await bonusServices.fetchBonus(id);
         break;
       case "referralWithdrawal":
-        transaction = await referralWithdrawalServices.fetchReferralWithdrawal(id);
+        transaction = await referralWithdrawalServices.fetchReferralWithdrawal(
+          id
+        );
         break;
       default:
         req.flash("error", "Invalid transaction type.");
@@ -542,6 +552,7 @@ class UserController {
       withdrawals,
       user: userDetails,
       currentPage: req.url,
+      formatDateWithTime,
     });
   }
 

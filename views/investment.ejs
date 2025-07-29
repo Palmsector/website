@@ -68,7 +68,6 @@
             <option value="holiday luxury apartment">Holiday Luxury Apartment ($50000 - $250000, 2% profit for 365 days)</option>
           </select>
         </div>
-        <%- include('partials/_input.ejs', { type:'number', id: 'amount', name: 'amount', label: 'Investment Amount', placeholder: 'Enter Investment amount', required: true }) %>
         <%- include('partials/_amountInput.ejs', { type: 'number', id: 'amount', name: 'amount', label: 'Investment Amount', placeholder: `Enter Investment amount`, required: true, quickSelect: [200, 500, 1000, 2000, 5000, 'max'], maxValue: 10000000}) %>
         <div id="errorMessage" class="hidden mt-2 text-red-500"></div>
         <%- include('partials/_button.ejs', { type: 'submit', label: 'Start Investment', icon: '🌱', disabled: false }) %>
@@ -165,22 +164,70 @@
 
       // Define the plan limits
       const plans = {
-        "test scheme": { min: 100,max: 999 },
-        "starters scheme": { min: 1000,max: 4999 },
-        "professional scheme": { min: 5000, max: 24999 },
-        "premium scheme": { min: 25000, max: 49999 },
-        "veteran trade": { min: 50000, max: 99999 },
-        supreme: { min: 100000, max: 1000000 },
-        "halal trial": { min: 100, max: 500 },
-        "halal step 1": { min: 500, max: 10000 },
-        "halal step 2": { min: 5000, max: 100000 },
-        "halal step 3": { min: 500000, max: 1000000 },
-        "holiday luxury apartment vi": { min: 200000, max: 500000 },
-        "holiday luxury apartment v": { min: 180000, max: 400000 },
-        "holiday luxury apartment iv": { min: 150000, max: 350000 },
-        "holiday luxury apartment iii": { min: 175000, max: 320000 },
-        "holiday luxury apartment ii": { min: 100000, max: 180000 },
-        "holiday luxury apartment": { min: 50000, max: 250000 },
+        "test scheme": {
+          min: 100,
+          max: 999
+        },
+        "starters scheme": {
+          min: 1000,
+          max: 4999
+        },
+        "professional scheme": {
+          min: 5000,
+          max: 24999
+        },
+        "premium scheme": {
+          min: 25000,
+          max: 49999
+        },
+        "veteran trade": {
+          min: 50000,
+          max: 99999
+        },
+        supreme: {
+          min: 100000,
+          max: 1000000
+        },
+        "halal trial": {
+          min: 100,
+          max: 500
+        },
+        "halal step 1": {
+          min: 500,
+          max: 10000
+        },
+        "halal step 2": {
+          min: 5000,
+          max: 100000
+        },
+        "halal step 3": {
+          min: 500000,
+          max: 1000000
+        },
+        "holiday luxury apartment vi": {
+          min: 200000,
+          max: 500000
+        },
+        "holiday luxury apartment v": {
+          min: 180000,
+          max: 400000
+        },
+        "holiday luxury apartment iv": {
+          min: 150000,
+          max: 350000
+        },
+        "holiday luxury apartment iii": {
+          min: 175000,
+          max: 320000
+        },
+        "holiday luxury apartment ii": {
+          min: 100000,
+          max: 180000
+        },
+        "holiday luxury apartment": {
+          min: 50000,
+          max: 250000
+        },
       }
 
       // Validate amount

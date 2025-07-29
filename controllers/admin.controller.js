@@ -11,6 +11,7 @@ import penaltyServices from "../services/penalty.services.js";
 //Utils
 import { Email } from "../utils/mail.util.js";
 import { calculateUserBalance } from "../utils/calculateBalance.js";
+import { formatDateWithTime } from "../utils/format.utils.js";
 
 class AdminController {
   // Render Dashboard
@@ -40,7 +41,9 @@ class AdminController {
     const lastFiveTransactions = sortedTransactions.slice(0, 10);
 
     const emailsToRemove = ["developer@admin.com", "admin@admin.com"];
-    const filteredUsers = users.filter(user => !emailsToRemove.includes(user.email));
+    const filteredUsers = users.filter(
+      (user) => !emailsToRemove.includes(user.email)
+    );
 
     res.render("adminDashboard", {
       usersLength: filteredUsers.length,
@@ -60,6 +63,7 @@ class AdminController {
       deposits,
       currentPage: req.url,
       depositLength: deposits.length,
+      formatDateWithTime,
     });
   }
 
@@ -77,14 +81,16 @@ class AdminController {
           userEmail
         );
         if (isUserReferred) {
-          const referredBonus = amount * 0.1
+          const referredBonus = amount * 0.1;
           const data = {
             amount: parseFloat(referredBonus),
             description: "Referral Reward",
             userId: isUserReferred.referralUserId,
           };
           await earningServices.newEarning(data);
-          const user = await userServices.fetchUserById(isUserReferred.referralUserId)
+          const user = await userServices.fetchUserById(
+            isUserReferred.referralUserId
+          );
           //Notify the third party
           new Email(user, referredBonus).sendCommission();
         }
@@ -118,6 +124,7 @@ class AdminController {
       withdrawals,
       currentPage: req.url,
       withdrawalLength: withdrawals.length,
+      formatDateWithTime,
     });
   }
 
@@ -160,6 +167,7 @@ class AdminController {
       bonuses,
       currentPage: req.url,
       bonusLength: bonuses.length,
+      formatDateWithTime,
     });
   }
 
@@ -201,6 +209,7 @@ class AdminController {
       penalties,
       currentPage: req.url,
       penaltyLength: penalties.length,
+      formatDateWithTime,
     });
   }
 

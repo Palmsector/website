@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', serif;
+  font-family: "Inter", serif;
   font-optical-sizing: auto;
 }
 
@@ -49,11 +49,11 @@ body {
 }
 
 .collapsible.active {
-  color: #28A745;
+  color: #28a745;
 }
 
 .collapsible:after {
-  content: '\002B';
+  content: "\002B";
   color: black;
   font-weight: bolder;
   float: right;
@@ -61,8 +61,8 @@ body {
 }
 
 .active:after {
-  content: '\2212';
-  color: #28A745;
+  content: "\2212";
+  color: #28a745;
 }
 
 .content {
@@ -76,7 +76,7 @@ body {
 
 /* Plans Page */
 .tab-btn {
-  @apply hover:bg-slate-100 px-4 py-2 border border-slate-300 rounded-md font-semibold text-slate-700 text-xs md:text-sm xl:text-base;
+  @apply hover:bg-accentGreen px-4 py-2 border hover:text-white border-accentGreen rounded-md font-semibold text-slate-700 text-xs md:text-sm xl:text-base;
 }
 
 .active-tab {
@@ -105,15 +105,15 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #28A745;
+  background: #28a745;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #145A32;
+  background: #145a32;
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #28A745 #f4f6ff;
+  scrollbar-color: #28a745 #f4f6ff;
 }
