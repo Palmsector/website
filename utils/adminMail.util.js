@@ -1,34 +1,18 @@
-import nodemailer from "nodemailer";
+import { sendEmail as resendSendEmail } from "./sendEmail.js";
 
 //Constants
-const Email = process.env.EMAIL;
-const EmailPassword = process.env.EMAIL_PASSWORD;
-const From = process.env.FROM;
 const AdminEmail = process.env.ADMIN_EMAIL;
 
-export function sendEmail(subject, text) {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.zoho.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: Email,
-      pass: EmailPassword,
-    },
-  });
+export async function sendEmail(subject, text) {
+  try {
+    await resendSendEmail({
+      to: AdminEmail,
+      subject,
+      html: `<pre>${text}</pre>`,
+    });
 
-  const mailOptions = {
-    from: From,
-    to: AdminEmail,
-    subject: subject,
-    text: text,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
+    console.log(`✅ Admin email sent to ${AdminEmail} | ${subject}`);
+  } catch (error) {
+    console.error("❌ Failed to send admin email via Resend:", error);
+  }
 }
