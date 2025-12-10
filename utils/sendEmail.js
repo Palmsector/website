@@ -16,7 +16,7 @@ export async function sendEmail({ to, subject, html }) {
       html,
       replyTo: replyEmail,
     });
-    console.log("✅ Email sent via Resend:", data);
+    console.log("✅ Email sent via Resend");
     return data;
   } catch (error) {
     console.error("❌ Failed to send email via Resend:", error);
