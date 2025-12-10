@@ -9,9 +9,6 @@ const router = express.Router();
 router.get("/create", authController.renderRegistration);
 router.post("/create", authController.registration);
 
-//Verification Page
-router.get("/verify", authController.handleUserVerification);
-
 //Login Page
 router.get("/login", authController.renderLoginPage);
 router.post("/login", authController.loginUser);
