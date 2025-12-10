@@ -15,7 +15,6 @@ model User {
   password             String
   role                 UserRole             @default(user)
   isSuspended          Boolean              @default(false)
-  isVerified           Boolean              @default(false)
   passwordReset        String?
   passwordResetExpires DateTime             @default(now())
   Wallet               UserWallet?

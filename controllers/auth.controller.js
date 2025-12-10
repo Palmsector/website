@@ -121,10 +121,6 @@ class AuthController {
     new Email(userData).sendWelcome();
     sendEmail("New User Notification", `A new user signed up: ${user.fullName} (${user.email}).`);
 
-    //Verification Link, send Email
-    const verifyLink = `${process.env.BASE_URL}/verify?token=${verificationToken}`;
-    new Email(userData, "", verifyLink).sendVerification();
-
     // Respond and Redirect to the login Page
     req.flash("message", {
       success: true,
@@ -134,62 +130,6 @@ class AuthController {
 
     return res.redirect("/login");
   }
-
-  //Verify User
-  async handleUserVerification(req, res) {
-    const token = req.query.token;
-
-    if (!token) {
-      req.flash("message", {
-        error: true,
-        title: "Invalid Request",
-        description: "Verification token is missing."
-      });
-      return res.redirect("/login");
-    }
-
-    try {
-      const decoded = jwt.verify(token, process.env.EMAIL_VERIFICATION_SECRET);
-      const user = await UserService.fetchUserById(decoded.userId);
-
-      if (!user) {
-        req.flash("message", {
-          error: true,
-          title: "User Not Found",
-          description: "No user associated with this verification token."
-        });
-        return res.redirect("/login");
-      }
-
-      if (user.isVerified) {
-        req.flash("message", {
-          info: true,
-          title: "Already Verified",
-          description: "This email has already been verified."
-        });
-        return res.redirect("/login");
-      }
-
-      await UserService.editUser(user.id, { isVerified: true });
-
-      req.flash("message", {
-        success: true,
-        title: "Email Verified",
-        description: "Your email has been successfully verified. You can now log in."
-      });
-      res.redirect("/login");
-
-    } catch (err) {
-      console.error("Email verification error:", err);
-      req.flash("message", {
-        error: true,
-        title: "Verification Failed",
-        description: "The verification link is invalid or has expired."
-      });
-      res.redirect("/login");
-    }
-  }
-
 
   //Render Login Page
   async renderLoginPage(req, res) {
@@ -212,18 +152,6 @@ class AuthController {
         title: "Invalid Credentials",
         description:
           "Please check your entered email and password, and try again.",
-      });
-      return res.redirect("/login");
-    }
-
-    if (foundUser.isVerified === false) {
-      //throw an info error telling them to verify their email
-      req.flash("message", {
-        info: true,
-        title: "Verify Your Account Email",
-        description:
-          `Your account is active, but your email address hasn't been verified yet. 
-          We've sent a verification link to your registered email.`,
       });
       return res.redirect("/login");
     }

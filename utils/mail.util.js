@@ -41,9 +41,6 @@ export class Email {
   async sendWelcome() {
     await this._send("welcome", "Welcome to Palm Sector");
   }
-  async sendVerification() {
-    await this._send("verification", "Verify your Email");
-  }
   async sendDeposit() {
     await this._send("deposit", "New Deposit");
   }
